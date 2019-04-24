@@ -1,0 +1,370 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+  <head>
+    <title>SVG Banner Generator</title>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://d3js.org/d3.v3.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://rawgithub.com/t0m/select2-bootstrap-css/bootstrap3/select2-bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.7.0/spectrum.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.7.0/spectrum.js"></script>
+
+    <!--Fonts!-->
+    <link href='https://fonts.googleapis.com/css?family=Questrial|Rambla|Alegreya+Sans+SC|Alfa+Slab+One|Source+Sans+Pro|Nixie+One|Glegoo|Dosis|Abel|Bubblegum+Sans|Patrick+Hand|Fira+Sans|Crafty+Girls|Noto+Sans|Domine|Droid+Sans|Cantata+One|Permanent+Marker|Just+Another+Hand|Jockey+One|Signika+Negative|Lato|Arvo|Antic+Slab|Cabin|Playfair+Display|Fauna+One|ABeeZee|BenchNine|Viga|Neuton|Sorts+Mill+Goudy|Economica|News+Cycle|Michroma|Lora|Niconne|PT+Sans|Poiret+One|Acme|Armata|Cherry+Cream+Soda|Syncopate|PT+Sans+Narrow|Ropa+Sans|Cabin+Condensed|Tinos|Philosopher|Bad+Script|Istok+Web|Arimo|Quicksand|Paytone+One|Oleo+Script|Noto+Serif|Ubuntu|Gudea|Marck+Script|Droid+Sans+Mono|Montserrat+Alternates|Josefin+Sans|Bitter|Carrois+Gothic|PT+Serif|Limelight|Lobster|Gentium+Basic|Kreon|Fugaz+One|Waiting+for+the+Sunrise|Monda|Reenie+Beanie|Anton|Crete+Round|Shadows+Into+Light|Rokkitt|Josefin+Slab|Fredoka+One|Russo+One|Libre+Baskerville|Copse|Racing+Sans+One|Walter+Turncoat|Sigmar+One|Source+Code+Pro|Gloria+Hallelujah|Fontdiner+Swanky|Calligraffitti|Exo|Asap|Tangerine|Days+One|Cantarell|Antic|Muli|Great+Vibes|Alegreya+Sans|Ubuntu+Condensed|EB+Garamond|Droid+Serif|Molengo|Jura|Allerta|Dancing+Script|Montserrat|Electrolize|Architects+Daughter|Open+Sans|Open+Sans+Condensed:300|Coda|Actor|Merriweather|Varela|Didact+Gothic|Chewy|Berkshire+Swash|Scada|Orbitron|Abril+Fatface|Titillium+Web|Bangers|Roboto+Condensed|Ruda|Marvel|Merriweather+Sans|Sanchez|Enriqueta|Changa+One|Archivo+Narrow|Oxygen|Archivo+Black|Hind|Vollkorn|Nobile|Passion+One|Patua+One|Audiowide|Hammersmith+One|Cookie|Nunito|Quattrocento+Sans|Pinyon+Script|Sacramento|Exo+2|Ultra|Raleway|Amiri|Vidaloka|Slabo+27px|Kaushan+Script|Roboto|Inconsolata|Pacifico|Righteous|Carme|Squada+One|Julius+Sans+One|Signika|Cuprum|Source+Serif+Pro|PT+Sans+Caption|Lusitana|Courgette|Shadows+Into+Light+Two|Homenaje|Play|Noticia+Text|Black+Ops+One|IM+Fell+English|Indie+Flower|Alegreya|Yanone+Kaffeesatz|Comfortaa|Homemade+Apple|Old+Standard+TT|Share|Cutive|Advent+Pro|Sintony|Playball|Roboto+Slab|Goudy+Bookletter+1911|Pathway+Gothic+One|Karla|Playfair+Display+SC|Oswald|Quattrocento|Maven+Pro|Alice|Amatic+SC|Special+Elite|Satisfy|Basic|Bree+Serif|Coming+Soon|Damion|Bevan|Amaranth|Pontano+Sans|Varela+Round|Francois+One|Fjalla+One|Volkhov|Crimson+Text|Doppio+One|Chivo|Voltaire|Luckiest+Guy|Cardo|Gentium+Book+Basic|Covered+By+Your+Grace|Handlee|Rock+Salt|Nothing+You+Could+Do|Lobster+Two|Cinzel' rel='stylesheet' type='text/css'>
+    <style>
+      body {
+          font-family: 'Roboto', sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="margin-top:20px" id="banner"></div>
+
+   <!-- Text Input -->
+
+<div class="well">
+    <div class="row" style="margin-left:20px">
+        <hr>
+        <div class="col-md-10" style="margin-top:10px">
+           <input type="text" class="form-control" id="hiddentext" value="VANESSA">
+        </div>
+   </div>
+
+    <!-- Font Selector -->
+    <div class="row" style="margin-left:20px">
+        <div class="col-md-4">
+              <h3>Font</h3>
+                  <select name="hiddenfont" id="hiddenfont" aria-controls="hiddenfont" class="form-control input-sm">                
+                   <option value="Questrial">Questrial</option>                   <option value="Rambla">Rambla</option>
+                   <option value="Alegreya Sans SC">Alegreya Sans SC</option>
+                   <option value="Alfa Slab One">Alfa Slab One</option>
+                   <option value="Source Sans Pro">Source Sans Pro</option>
+                   <option value="Nixie One">Nixie One</option>
+                   <option value="Glegoo">Glegoo</option>
+                   <option value="Dosis">Dosis</option>
+                   <option value="Abel">Abel</option>
+                   <option value="Bubblegum Sans">Bubblegum Sans</option>
+                   <option value="Patrick Hand">Patrick Hand</option>
+                   <option value="Fira Sans">Fira Sans</option>
+                   <option value="Crafty Girls">Crafty Girls</option>
+                   <option value="Noto Sans">Noto Sans</option>
+                   <option value="Domine">Domine</option>
+                   <option value="Droid Sans">Droid Sans</option>
+                   <option value="Cantata One">Cantata One</option>
+                   <option value="Permanent Marker">Permanent Marker</option>
+                   <option value="Just Another Hand">Just Another Hand</option>
+                   <option value="Jockey One">Jockey One</option>
+                   <option value="Signika Negative">Signika Negative</option>
+                   <option value="Lato">Lato</option>
+                   <option value="Arvo">Arvo</option>
+                   <option value="Antic Slab">Antic Slab</option>
+                   <option value="Cabin">Cabin</option>
+                   <option value="Playfair Display">Playfair Display</option>
+                   <option value="Fauna One">Fauna One</option>
+                   <option value="ABeeZee">ABeeZee</option>
+                   <option value="BenchNine">BenchNine</option>
+                   <option value="Viga">Viga</option>
+                   <option value="Neuton">Neuton</option>
+                   <option value="Sorts Mill Goudy">Sorts Mill Goudy</option>
+                   <option value="Economica">Economica</option>
+                   <option value="News Cycle">News Cycle</option>
+                   <option value="Michroma">Michroma</option>
+                   <option value="Lora">Lora</option>
+                   <option value="Niconne">Niconne</option>
+                   <option value="PT Sans">PT Sans</option>
+                   <option value="Poiret One">Poiret One</option>
+                   <option value="Acme">Acme</option>
+                   <option value="Armata">Armata</option>
+                   <option value="Cherry Cream Soda">Cherry Cream Soda</option>
+                   <option value="Syncopate">Syncopate</option>
+                   <option value="PT Sans Narrow">PT Sans Narrow</option>
+                   <option value="Ropa Sans">Ropa Sans</option>
+                   <option value="Cabin Condensed">Cabin Condensed</option>
+                   <option value="Tinos">Tinos</option>
+                   <option value="Philosopher">Philosopher</option>
+                   <option value="Bad Script">Bad Script</option>
+                   <option value="Istok Web">Istok Web</option>
+                   <option value="Arimo">Arimo</option>
+                   <option value="Quicksand">Quicksand</option>
+                   <option value="Paytone One">Paytone One</option>
+                   <option value="Oleo Script">Oleo Script</option>
+                   <option value="Noto Serif">Noto Serif</option>
+                   <option value="Ubuntu">Ubuntu</option>
+                   <option value="Gudea">Gudea</option>
+                   <option value="Marck Script">Marck Script</option>
+                   <option value="Droid Sans Mono">Droid Sans Mono</option>
+                   <option value="Montserrat Alternates">Montserrat Alternates</option>
+                   <option value="Josefin Sans">Josefin Sans</option>
+                   <option value="Bitter">Bitter</option>
+                   <option value="Carrois Gothic">Carrois Gothic</option>
+                   <option value="PT Serif">PT Serif</option>
+                   <option value="Limelight">Limelight</option>
+                   <option value="Lobster">Lobster</option>
+                   <option value="Gentium Basic">Gentium Basic</option>
+                   <option value="Kreon">Kreon</option>
+                   <option value="Fugaz One">Fugaz One</option>
+                   <option value="Waiting for the Sunrise">Waiting for the Sunrise</option>
+                   <option value="Monda">Monda</option>
+                   <option value="Reenie Beanie">Reenie Beanie</option>
+                   <option value="Anton">Anton</option>
+                   <option value="Crete Round">Crete Round</option>
+                   <option value="Shadows Into Light">Shadows Into Light</option>
+                   <option value="Rokkitt">Rokkitt</option>
+                   <option value="Josefin Slab">Josefin Slab</option>
+                   <option value="Fredoka One">Fredoka One</option>
+                   <option value="Russo One">Russo One</option>
+                   <option value="Libre Baskerville">Libre Baskerville</option>
+                   <option value="Copse">Copse</option>
+                   <option value="Racing Sans One">Racing Sans One</option>
+                   <option value="Walter Turncoat">Walter Turncoat</option>
+                   <option value="Sigmar One">Sigmar One</option>
+                   <option value="Source Code Pro">Source Code Pro</option>
+                   <option value="Gloria Hallelujah">Gloria Hallelujah</option>
+                   <option value="Fontdiner Swanky">Fontdiner Swanky</option>
+                   <option value="Calligraffitti">Calligraffitti</option>
+                   <option value="Exo">Exo</option>
+                   <option value="Asap">Asap</option>
+                   <option value="Tangerine">Tangerine</option>
+                   <option value="Days One">Days One</option>
+                   <option value="Cantarell">Cantarell</option>
+                   <option value="Antic">Antic</option>
+                   <option value="Muli">Muli</option>
+                   <option value="Great Vibes">Great Vibes</option>
+                   <option value="Alegreya Sans">Alegreya Sans</option>
+                   <option value="Ubuntu Condensed">Ubuntu Condensed</option>
+                   <option value="EB Garamond">EB Garamond</option>
+                   <option value="Droid Serif">Droid Serif</option>
+                   <option value="Molengo">Molengo</option>
+                   <option value="Jura">Jura</option>
+                   <option value="Allerta">Allerta</option>
+                   <option value="Dancing Script">Dancing Script</option>
+                   <option value="Montserrat">Montserrat</option>
+                   <option value="Electrolize">Electrolize</option>
+                   <option value="Architects Daughter">Architects Daughter</option>
+                   <option value="Open Sans">Open Sans</option>
+                   <option value="Open Sans Condensed:300">Open Sans Condensed:300</option>
+                   <option value="Coda">Coda</option>
+                   <option value="Actor">Actor</option>
+                   <option value="Merriweather">Merriweather</option>
+                   <option value="Varela">Varela</option>
+                   <option value="Didact Gothic">Didact Gothic</option>
+                   <option value="Chewy">Chewy</option>
+                   <option value="Berkshire Swash">Berkshire Swash</option>
+                   <option value="Scada">Scada</option>
+                   <option value="Orbitron">Orbitron</option>
+                   <option value="Abril Fatface">Abril Fatface</option>
+                   <option value="Titillium Web">Titillium Web</option>
+                   <option value="Bangers">Bangers</option>
+                   <option value="Roboto Condensed">Roboto Condensed</option>
+                   <option value="Ruda">Ruda</option>
+                   <option value="Marvel">Marvel</option>
+                   <option value="Merriweather Sans">Merriweather Sans</option>
+                   <option value="Sanchez">Sanchez</option>
+                   <option value="Enriqueta">Enriqueta</option>
+                   <option value="Changa One">Changa One</option>
+                   <option value="Archivo Narrow">Archivo Narrow</option>
+                   <option value="Oxygen">Oxygen</option>
+                   <option value="Archivo Black">Archivo Black</option>
+                   <option value="Hind">Hind</option>
+                   <option value="Vollkorn">Vollkorn</option>
+                   <option value="Nobile">Nobile</option>
+                   <option value="Passion One">Passion One</option>
+                   <option value="Patua One">Patua One</option>
+                   <option value="Audiowide">Audiowide</option>
+                   <option value="Hammersmith One">Hammersmith One</option>
+                   <option value="Cookie">Cookie</option>
+                   <option value="Nunito">Nunito</option>
+                   <option value="Quattrocento Sans">Quattrocento Sans</option>
+                   <option value="Pinyon Script">Pinyon Script</option>
+                   <option value="Sacramento">Sacramento</option>
+                   <option value="Exo 2">Exo 2</option>
+                   <option value="Ultra">Ultra</option>
+                   <option value="Raleway">Raleway</option>
+                   <option value="Amiri">Amiri</option>
+                   <option value="Vidaloka">Vidaloka</option>
+                   <option value="Slabo 27px">Slabo 27px</option>
+                   <option value="Kaushan Script">Kaushan Script</option>
+                   <option value="Roboto">Roboto</option>
+                   <option value="Inconsolata">Inconsolata</option>
+                   <option value="Pacifico">Pacifico</option>
+                   <option value="Righteous">Righteous</option>
+                   <option value="Carme">Carme</option>
+                   <option value="Squada One">Squada One</option>
+                   <option value="Julius Sans One">Julius Sans One</option>
+                   <option value="Signika">Signika</option>
+                   <option value="Cuprum">Cuprum</option>
+                   <option value="Source Serif Pro">Source Serif Pro</option>
+                   <option value="PT Sans Caption">PT Sans Caption</option>
+                   <option value="Lusitana">Lusitana</option>
+                   <option value="Courgette">Courgette</option>
+                   <option value="Shadows Into Light Two">Shadows Into Light Two</option>
+                   <option value="Homenaje">Homenaje</option>
+                   <option value="Play">Play</option>
+                   <option value="Noticia Text">Noticia Text</option>
+                   <option value="Black Ops One">Black Ops One</option>
+                   <option value="IM Fell English">IM Fell English</option>
+                   <option value="Indie Flower">Indie Flower</option>
+                   <option value="Alegreya">Alegreya</option>
+                   <option value="Yanone Kaffeesatz">Yanone Kaffeesatz</option>
+                   <option value="Comfortaa">Comfortaa</option>
+                   <option value="Homemade Apple">Homemade Apple</option>
+                   <option value="Old Standard TT">Old Standard TT</option>
+                   <option value="Share">Share</option>
+                   <option value="Cutive">Cutive</option>
+                   <option value="Advent Pro">Advent Pro</option>
+                   <option value="Sintony">Sintony</option>
+                   <option value="Playball">Playball</option>
+                   <option value="Roboto Slab">Roboto Slab</option>
+                   <option value="Goudy Bookletter 1911">Goudy Bookletter 1911</option>
+                   <option value="Pathway Gothic One">Pathway Gothic One</option>
+                   <option value="Karla">Karla</option>
+                   <option value="Playfair Display SC">Playfair Display SC</option>
+                   <option value="Oswald">Oswald</option>
+                   <option value="Quattrocento">Quattrocento</option>
+                   <option value="Maven Pro">Maven Pro</option>
+                   <option value="Alice">Alice</option>
+                   <option value="Amatic SC">Amatic SC</option>
+                   <option value="Special Elite">Special Elite</option>
+                   <option value="Satisfy">Satisfy</option>
+                   <option value="Basic">Basic</option>
+                   <option value="Bree Serif">Bree Serif</option>
+                   <option value="Coming Soon">Coming Soon</option>
+                   <option value="Damion">Damion</option>
+                   <option value="Bevan">Bevan</option>
+                   <option value="Amaranth">Amaranth</option>
+                   <option value="Pontano Sans">Pontano Sans</option>
+                   <option value="Varela Round">Varela Round</option>
+                   <option value="Francois One">Francois One</option>
+                   <option value="Fjalla One">Fjalla One</option>
+                   <option value="Volkhov">Volkhov</option>
+                   <option value="Crimson Text">Crimson Text</option>
+                   <option value="Doppio One">Doppio One</option>
+                   <option value="Chivo">Chivo</option>
+                   <option value="Voltaire">Voltaire</option>
+                   <option value="Luckiest Guy">Luckiest Guy</option>
+                   <option value="Cardo">Cardo</option>
+                   <option value="Gentium Book Basic">Gentium Book Basic</option>
+                   <option value="Covered By Your Grace">Covered By Your Grace</option>
+                   <option value="Handlee">Handlee</option>
+                   <option value="Rock Salt">Rock Salt</option>
+                   <option value="Nothing You Could Do">Nothing You Could Do</option>
+                   <option value="Lobster Two">Lobster Two</option>
+                   <option value="Cinzel">Cinzel</option>
+		  </select>
+        </div>
+        <div class="col-md-6" style="font-size: 50px; margin-top:30px; font-family: 'Cutive', sans-serif">Cutive</div>
+
+    <!-- Color Choosers -->
+        <div class="col-md-2">
+            <h3>Colors</h3>
+                <input name="color1" type='text' id="color1" value="#CCC" class="form-control input-sm"/>
+                <input name="color2" type='text' id="color2" value="#000" class="form-control input-sm"/>
+        </div>
+    </div>
+
+<!-- Buttons-->
+<div class="row"  style="margin-left:35px; margin-top:20px">
+    <button class="btn btn-success" id="save_as_svg" value="" onclick="save_svg()">save svg (no fonts)</button>
+
+    <!--GET SVG CODE-->
+    <a href="#collapseCode" data-toggle="collapse" aria-expanded="false" aria-controls="collapseCode">
+      <button class="btn btn-success">get svg code (fonts)</button>
+    </a>
+        <div class="collapse" id="collapseCode">
+            <div class="well" style="background:white" id="codearea">
+            </div>
+        </div>
+    </div>
+</div>
+    <script type="text/javascript">
+
+     $(document).ready(function() {
+
+      // Fill in the code area with the SVG code
+      var codearea = document.getElementById('codearea');
+      var code = document.getElementById("banner")
+      codearea.textContent = code.innerHTML;
+
+      // On any button click, change the input data
+        $('input[type=text]').change(function() {
+          var text = document.getElementById('hiddentext').value;
+          var font = document.getElementById('hiddenfont').value;
+          var color1 = document.getElementById('color1').value.replace('#',''); 
+          var color2 = document.getElementById('color2').value.replace('#',''); 
+          url =  "http://www.vbmis.com/bmi/project/banner/" + font + "/" + color1 + "/" + color2 + "/" + text
+          window.location.replace(url)       
+        });
+        $('select').change(function() {
+          var text = document.getElementById('hiddentext').value;
+          var font = document.getElementById('hiddenfont').value;
+          var color1 = document.getElementById('color1').value.replace('#',''); 
+          var color2 = document.getElementById('color2').value.replace('#',''); 
+          url =  "http://www.vbmis.com/bmi/project/banner/" + font + "/" + color1 + "/" + color2 + "/" + text
+          window.location.replace(url)       
+        });
+     });
+
+     $('#hiddenfont').select2();
+
+     $("#color1").spectrum({
+         preferredFormat:"hex",
+         color: "#CCC"
+     });
+     $("#color2").spectrum({
+         preferredFormat:"hex",
+         color: "#000"
+     });
+
+   // Generate graphic with d3
+
+var width = 1600,
+    height = 100
+
+var svg = d3.select("#banner").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+
+// the data will be appended here
+raw = {"letters":["Y","H","C","I","U","R","U","X","A","M","R","W","N","U","H","W","P","U","V","N","T","P","X","Q","D","W","D","R","G","L","L","A","Q","A","J","B","F","A","X","K","A","W","V","E","L","W","N","T","I","B","K","S","W","M","M","L","X","N","Z","Z","F","Q","P","R","G","C","R","Y","W","W","B","I","F","F","U","B","R","I","Y","C","D","I","R","Q","F","X","R","Y","E","O","I","G","L","M","L","U","O","D","Q","G","W","V","Z","I","N","D","D","H","M","W","S","H","S","M","D","A","Y","Q","K","M","Y","O","E","K","N","A","P","N","V","A","N","E","S","S","A","I","D","W","G","I","S","H","V","D","B","L","E","W","Q","B","O","I","Q","E","H","A","S","W","L","E","O","K","B","E","W","I","P","U","X","S","H","U","T","F","Y","B","R","P","Z","M","T","S","U","J","E","L","N","I","H","P","W","K","B","S","R","K","W","M","G","G","F","W","B","R","J","J","E","C","X","N","I","J","F","J","D","G","T","B","F","I","C","X","S","E","L","A","B","L","W","E","Z","X","U","Z","F","Z","V","N","F","H","E","L","Z","U","D","J","Q","N","E","V","R","V","E","I","Q","Q","G","X","N","B","D","E","M","R","I","A","O","R","W","N","H","Q","C","I","F","C","C","P","H","S","I","S","M","U","T","J","G","T","K","V","A","I","G","D","R","Q","V","T","I","F","W","H","P","B","J","M","Q","K","U","I","J","K","H","D","Y","Q","X","R","V","Y","Y","U","Y","G","I","U","K","O","Y","E","K","D","J","M","M","J","V","N","Q","D","J","Z","D","E","I","A","H","B","O","S","L","A","R","W","G","F","Z","K","Z","Z","F","C","R","S","D","Y","A","V","M","M","K","T"],
+       "colors":["#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#000","#000","#000","#000","#000","#000","#000","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC","#CCC"],
+       "x":["10","40","70","100","130","160","190","220","250","280","310","340","370","400","430","460","490","520","550","580","610","640","670","700","730","760","790","820","850","880","910","940","970","1000","1030","1060","1090","1120","1150","1180","1210","1240","1270","1300","1330","1360","1390","1420","1450","1480","1510","1540","1570","1600","1630","1660","1690","1720","1750","1780","1810","1840","1870","1900","1930","1960","1990","2020","2050","2080","2110","2140","2170","2200","2230","2260","2290","2320","2350","2380","2410","2440","2470","2500","2530","2560","2590","2620","2650","2680","2710","2740","2770","2800","2830","2860","2890","2920","2950","2980","3010","3040","3070","3100","3130","3160","3190","3220","3250","3280","3310","3340","3370","3400","3430","3460","3490","3520","3550","3580","3610","3640","3670","3700","10","40","70","100","130","160","190","220","250","280","310","340","370","400","430","460","490","520","550","580","610","640","670","700","730","760","790","820","850","880","910","940","970","1000","1030","1060","1090","1120","1150","1180","1210","1240","1270","1300","1330","1360","1390","1420","1450","1480","1510","1540","1570","1600","1630","1660","1690","1720","1750","1780","1810","1840","1870","1900","1930","1960","1990","2020","2050","2080","2110","2140","2170","2200","2230","2260","2290","2320","2350","2380","2410","2440","2470","2500","2530","2560","2590","2620","2650","2680","2710","2740","2770","2800","2830","2860","2890","2920","2950","2980","3010","3040","3070","3100","3130","3160","3190","3220","3250","3280","3310","3340","3370","3400","3430","3460","3490","3520","3550","3580","3610","3640","3670","3700","10","40","70","100","130","160","190","220","250","280","310","340","370","400","430","460","490","520","550","580","610","640","670","700","730","760","790","820","850","880","910","940","970","1000","1030","1060","1090","1120","1150","1180","1210","1240","1270","1300","1330","1360","1390","1420","1450","1480","1510","1540","1570","1600","1630","1660","1690","1720","1750","1780","1810","1840","1870","1900","1930","1960","1990","2020","2050","2080","2110","2140","2170","2200","2230","2260","2290","2320","2350","2380","2410","2440","2470","2500","2530","2560","2590","2620","2650","2680","2710","2740","2770","2800","2830","2860","2890","2920","2950","2980","3010","3040","3070","3100","3130","3160","3190","3220","3250","3280","3310","3340","3370","3400","3430","3460","3490","3520","3550","3580","3610","3640","3670","3700"],
+       "y":["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","20","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40","40"]};
+
+data = []
+for (i = 0; i < raw.letters.length; i++) { 
+  data.push({"letter":raw.letters[i],"color":raw.colors[i],"x":+raw.x[i],"y":+raw.y[i]});
+}
+
+var text = svg.selectAll("text")
+    .data(data)
+    .enter()
+    .append("text");
+
+var textLabels = text
+                 .attr("x", function(d,i) { return d.x; })
+                 .attr("y", function(d,i) { return d.y + 30; })
+                 .style("fill",function(d){ return d.color })
+                 .style("font-family","'Cutive', sans-serif")
+                 .text( function (d) { return d.letter })
+
+//Vanessa's Hacky save svg function!
+function save_svg(evt) {
+    var svg = document.getElementsByTagName("svg");
+    var serializer = new XMLSerializer();
+    var svg_blob = new Blob([serializer.serializeToString(svg[0])],
+                            {'type': "image/svg+xml"});
+    var url = URL.createObjectURL(svg_blob);
+    var svg_win = window.open(url, "svg_win");
+}
+
+</script>
+  </body>
+<footer>
+<a style="float:right; margin-right:20px" target="_blank" href="https://vsoch.github.io">vsoch</a>
+</footer>
+</html>
